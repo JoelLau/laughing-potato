@@ -4,12 +4,11 @@ services:
   db:
     container_name: db
     image: postgres
+    env_file:
+      - './env/postgres.env'
     volumes:
       - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      
   web:
     container_name: web
     build: .
@@ -18,9 +17,7 @@ services:
       - ./code:/code
     ports:
       - "8000:8000"
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    env_file:
+      - './env/postgres.env'
     depends_on:
       - db
