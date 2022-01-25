@@ -14,7 +14,7 @@ class Product(models.Model):
     desc = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     date_created = models.DateTimeField('date created')
-    date_modified = models.DateTimeField('date modified', default=timezone.now())
+    date_modified = models.DateTimeField('date modified', default=timezone.now)
 
     def __str__(self):
         return self.name
