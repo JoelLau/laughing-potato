@@ -16,7 +16,8 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=200)
     desc = models.CharField(max_length=200)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category_list = models.ManyToManyField(Category)
+    # category = models.ForeignKey(Category, on_delete=models.CASCADE)
     date_created = models.DateTimeField('date created', default=timezone.now, editable=False)
     date_modified = models.DateTimeField('date modified', default=timezone.now)
 
